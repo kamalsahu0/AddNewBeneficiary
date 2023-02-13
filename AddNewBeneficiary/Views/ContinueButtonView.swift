@@ -8,7 +8,7 @@
 import UIKit
 
 class ContinueButtonView: UIView {
-
+    
     let myButton = UIButton(type: .custom)
     
     override init(frame: CGRect) {
@@ -19,9 +19,9 @@ class ContinueButtonView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-
 }
+
+// MARK: - Extension of ContinueButtonView
 extension ContinueButtonView
 {
     func style()
@@ -29,7 +29,6 @@ extension ContinueButtonView
         translatesAutoresizingMaskIntoConstraints = false
         myButton.translatesAutoresizingMaskIntoConstraints = false
         myButton.setTitle("Continue", for: .normal)
-        //myButton.isEnabled = false
         
         myButton.configuration = .filled()
         myButton.tintColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
@@ -49,13 +48,8 @@ extension ContinueButtonView
     }
     @objc func buttonAction(_ sender:UIButton!)
     {
-        
-        print("Button tapped")
+        print("ContinueButton tapped")
         let vc = ViewController()
         vc.title = "Beneficiary Details"
-    
-       
     }
-    
-   
 }

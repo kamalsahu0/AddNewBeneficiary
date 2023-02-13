@@ -7,8 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController {
     
+    let tableView = UITableView()
+    
+    // MARK: - customer Demo data
     let customerData = [
         DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving"),
         DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving"),
@@ -16,8 +19,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving"),
         DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving")
     ]
-    
-    let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         setConstraints()
     }
-
     
+    // MARK: - setConstraints
     func setConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -38,7 +39,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
     }
+    
+}
 
+// MARK: - Table view controller delegate and datasource
+extension ViewController: UITableViewDataSource, UITableViewDelegate
+{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return customerData.count
     }

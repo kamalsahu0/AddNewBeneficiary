@@ -10,11 +10,12 @@ import UIKit
 import UIKit
 
 class CheckBox: UIButton {
-    // Images
+    
+    // MARK: - Check Images
     var checkedImage = UIImage()
     var uncheckedImage = UIImage()
     
-    // Bool property
+    // MARK: - Clicked Check box
     var isChecked: Bool = false {
         didSet {
             if isChecked == true {
