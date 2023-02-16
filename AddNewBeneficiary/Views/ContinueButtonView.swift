@@ -9,7 +9,7 @@ import UIKit
 
 class ContinueButtonView: UIView {
     
-    let myButton = UIButton(type: .custom)
+    let continueBtn = UIButton(type: .custom)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,34 +22,34 @@ class ContinueButtonView: UIView {
 }
 
 // MARK: - Extension of ContinueButtonView
-extension ContinueButtonView
-{
+extension ContinueButtonView {
     func style()
     {
         translatesAutoresizingMaskIntoConstraints = false
-        myButton.translatesAutoresizingMaskIntoConstraints = false
-        myButton.setTitle("Continue", for: .normal)
-        
-        myButton.configuration = .filled()
-        myButton.tintColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
-        myButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        continueBtn.translatesAutoresizingMaskIntoConstraints = false
+        continueBtn.setTitle("Continue", for: .normal)
+        continueBtn.configuration = .filled()
+        continueBtn.tintColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
+        //myButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
     }
+    
     func layOut()
     {
-        addSubview(myButton)
+        addSubview(continueBtn)
         
         NSLayoutConstraint.activate([
-            myButton.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
-            myButton.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: myButton.trailingAnchor, multiplier: 2),
-            bottomAnchor.constraint(equalToSystemSpacingBelow: myButton.bottomAnchor, multiplier: 5)
+            continueBtn.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
+            continueBtn.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: continueBtn.trailingAnchor, multiplier: 2),
+            bottomAnchor.constraint(equalToSystemSpacingBelow: continueBtn.bottomAnchor, multiplier: 5)
             
         ])
     }
-    @objc func buttonAction(_ sender:UIButton!)
-    {
-        print("ContinueButton tapped")
-        let vc = ViewController()
-        vc.title = "Beneficiary Details"
-    }
+//    @objc func buttonAction(_ sender:UIButton!)
+//    {
+//        print("ContinueButton tapped")
+//        let vc = ViewController()
+//        vc.title = "Beneficiary Details"
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
 }

@@ -8,10 +8,18 @@ import UIKit
 
 class AddNewBeneficiaryViewController: UIViewController {
     
-    
-    let addNewBeneficiaryView = AddNewBeneficiaryView()
-    
     var buttonView = ContinueButtonView()
+    
+    let selectBank = ["Select Bank",
+                      "KOTAK MAHINDRA BANK",
+                      "AXIS BANK",
+                      "BANK OF BARODA",
+                      "BANK OF INDIA",
+                      "BANK OF MAHARASHTRA",
+                      "CANARA BANK",
+                      "CENTRAL BANK OF INDIA"]
+    
+    let selectAccType = ["Select account type", "Saving", "Current", "Overdraft", "Cash Credit", "Loan", "NRE", "Credit Card"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +29,27 @@ class AddNewBeneficiaryViewController: UIViewController {
         layout()
     }
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.frame = CGRect(x: 10, y: 90, width: view.bounds.width - 20, height: view.bounds.height)
+        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: 1000)
+        scrollView.isPagingEnabled = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+    
+    lazy var addNewBeneficiaryView = AddNewBeneficiaryView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.width, height: 50))
+
+    
     // MARK: - AddNewBeneficiary Stack view
     lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [addNewBeneficiaryView])
+        let view = UIStackView()
+        view.frame = CGRect(x: 0, y: 0, width: scrollView.frame.width, height: 690)
         view.axis = .vertical
-        view.spacing = 0
         view.backgroundColor = .white
         view.layer.cornerRadius = 5
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -42,59 +63,61 @@ class AddNewBeneficiaryViewController: UIViewController {
     }()
     
 }
-// MARK: - Extension AddNewBeneficiaryViewController
-extension AddNewBeneficiaryViewController {
+// MARK: - Extension AddNewBeneficiaryViewController Style and layout
+extension AddNewBeneficiaryViewController  {
     
     // MARK: - style
     private func style(){
         
+        view.backgroundColor = .secondarySystemBackground
         addNewBeneficiaryView.translatesAutoresizingMaskIntoConstraints = false
+        addNewBeneficiaryView.bankSltBtn.addTarget(self, action: #selector(bnkSltButtonTapped(_:)), for: .touchUpInside)
+        addNewBeneficiaryView.selectAccTypeBtn.addTarget(self, action: #selector(selectAccTypeBtnTapped(_:)), for: .touchUpInside)
         
         buttonView.translatesAutoresizingMaskIntoConstraints = false
-        
-        buttonView.myButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
-        
+        buttonView.continueBtn.addTarget(self, action: #selector(continueBtnAction(_:)), for: .touchUpInside)
     }
-    @objc func buttonAction(_ sender:UIButton!)
-    {
-        print("Button tapped")
-        let vc = ViewController()
-        vc.title = "Beneficiary Details"
-        navigationController?.pushViewController(vc, animated: true)
-    }
+    
     // MARK: - layout Constraints
     private func layout() {
-        view.addSubview(stackView)
+        stackView.addArrangedSubview(addNewBeneficiaryView)
+        scrollView.addSubview(stackView)
+        view.addSubview(scrollView)
         view.addSubview(btnStackView)
         
         // MARK: - stackView
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 13),
-            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2),
-            view.bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 13)
+            
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
         // MARK: - button Stackview
         NSLayoutConstraint.activate([
-            btnStackView.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1),
+//            btnStackView.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1),
             btnStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             btnStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            btnStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
+            btnStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 30),
+
         ])
     }
     
-// MARK: - Set NavigationBar
+    //Continue btn Tapped
+    @objc func continueBtnAction(_ sender:UIButton!)
+    {
+        print("Button tapped")
+//        let vc = ViewController()
+//        vc.title = "Beneficiary Details"
+//        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - Set NavigationBar
     func setNavigationBar() {
         let startingYPos = UIApplication.shared.statusBarFrame.size.height;
         let navigationbar = UINavigationBar(frame: CGRect(x: 0, y: startingYPos, width: self.view.bounds.width, height: 100));
         let navItem = UINavigationItem(title: "Add New Beneficiary")
-        
-        
-        let leftbackButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: nil, action: nil)
-        
+       
         navigationbar.tintColor = .white
-        navItem.leftBarButtonItem = leftbackButton
         
         UINavigationBar.appearance().barTintColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -103,7 +126,7 @@ extension AddNewBeneficiaryViewController {
         view.addSubview(navigationbar)
     }
     
-// MARK: - changeStatusBarColor
+    // MARK: - changeStatusBarColor
     func changeStatusBarColor() {
         if #available(iOS 13.0, *) {
             let app = UIApplication.shared
@@ -127,5 +150,44 @@ extension AddNewBeneficiaryViewController {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
         }
+    }
+}
+
+// MARK: - Extension AddNewBeneficiaryViewController for PopOver View Controller
+extension AddNewBeneficiaryViewController: UIPopoverPresentationControllerDelegate {
+    
+    func showPopover(_ sender: UIButton, dataArray: [String], textField: UITextField) {
+        
+        // Create a view controller to display in the popover
+        let contentViewController = PopOverTableViewController(dataArray: dataArray, textField: textField)
+        contentViewController.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 3)
+        
+        // Create the popover presentation controller
+        contentViewController.modalPresentationStyle = .popover
+        if let popoverController = contentViewController.popoverPresentationController {
+            popoverController.delegate = self
+            popoverController.sourceView = sender
+            popoverController.sourceRect =  CGRect(x:CGRectGetMidX(sender.bounds), y: CGRectGetMidY(sender.bounds),width: UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height/2.6 )
+            popoverController.permittedArrowDirections = []
+        }
+        
+        // Present the popover
+        present(contentViewController, animated: true, completion: nil)
+        
+       
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        // Ensure that the popover is displayed on iPhones as well
+        return .none
+    }
+    
+    
+    @objc func bnkSltButtonTapped(_ sender: UIButton) {
+        showPopover(sender, dataArray: selectBank, textField: addNewBeneficiaryView.bnkSltTextField)
+    }
+    
+    @objc func selectAccTypeBtnTapped(_ sender: UIButton){
+        showPopover(sender, dataArray: selectAccType, textField: addNewBeneficiaryView.sltAccTypeTxt)
     }
 }

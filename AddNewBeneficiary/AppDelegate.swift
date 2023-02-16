@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let navigationController = UINavigationController(rootViewController:AddNewBeneficiaryViewController())
+    let navigationController = UINavigationController(rootViewController: MainViewController())
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

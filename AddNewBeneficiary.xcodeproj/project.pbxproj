@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8215B6F7299BFC7B00B76130 /* PopOverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B6F6299BFC7B00B76130 /* PopOverTableViewController.swift */; };
+		8215B6F9299C202E00B76130 /* DataModelJson.json in Sources */ = {isa = PBXBuildFile; fileRef = 8215B6F8299C202E00B76130 /* DataModelJson.json */; };
+		8215B6FB299D020600B76130 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B6FA299D020600B76130 /* MainViewController.swift */; };
+		8215B6FC299D020600B76130 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B6FA299D020600B76130 /* MainViewController.swift */; };
+		8215B6FD299D020600B76130 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B6FA299D020600B76130 /* MainViewController.swift */; };
 		821F888F29923FDC007E0E15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F888E29923FDC007E0E15 /* AppDelegate.swift */; };
 		821F889329923FDC007E0E15 /* AddNewBeneficiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F889229923FDC007E0E15 /* AddNewBeneficiaryViewController.swift */; };
 		821F889B29923FDD007E0E15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 821F889A29923FDD007E0E15 /* Assets.xcassets */; };
@@ -43,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8215B6F6299BFC7B00B76130 /* PopOverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverTableViewController.swift; sourceTree = "<group>"; };
+		8215B6F8299C202E00B76130 /* DataModelJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DataModelJson.json; sourceTree = "<group>"; };
+		8215B6FA299D020600B76130 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		821F888B29923FDC007E0E15 /* AddNewBeneficiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddNewBeneficiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		821F888E29923FDC007E0E15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		821F889229923FDC007E0E15 /* AddNewBeneficiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBeneficiaryViewController.swift; sourceTree = "<group>"; };
@@ -148,8 +156,10 @@
 		82611F3F299663E400344828 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				82611F3D2996524A00344828 /* ViewController.swift */,
+				8215B6FA299D020600B76130 /* MainViewController.swift */,
 				821F889229923FDC007E0E15 /* AddNewBeneficiaryViewController.swift */,
+				8215B6F6299BFC7B00B76130 /* PopOverTableViewController.swift */,
+				82611F3D2996524A00344828 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -158,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				82611F412996694000344828 /* DataModel.swift */,
+				8215B6F8299C202E00B76130 /* DataModelJson.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,10 +316,13 @@
 				821F889329923FDC007E0E15 /* AddNewBeneficiaryViewController.swift in Sources */,
 				821F888F29923FDC007E0E15 /* AppDelegate.swift in Sources */,
 				821F88CB29926BB4007E0E15 /* CheckBox.swift in Sources */,
+				8215B6F9299C202E00B76130 /* DataModelJson.json in Sources */,
 				821F88C72992694E007E0E15 /* ContinueButtonView.swift in Sources */,
 				82611F3E2996524A00344828 /* ViewController.swift in Sources */,
 				82611F422996694000344828 /* DataModel.swift in Sources */,
+				8215B6F7299BFC7B00B76130 /* PopOverTableViewController.swift in Sources */,
 				829797FC2992B7A90088C09C /* AddNewBeneficiaryView.swift in Sources */,
+				8215B6FB299D020600B76130 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +333,7 @@
 				821F88A929923FDE007E0E15 /* AddNewBeneficiaryTests.swift in Sources */,
 				821F88CC29926BB4007E0E15 /* CheckBox.swift in Sources */,
 				821F88C82992694E007E0E15 /* ContinueButtonView.swift in Sources */,
+				8215B6FC299D020600B76130 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +345,7 @@
 				821F88C92992694E007E0E15 /* ContinueButtonView.swift in Sources */,
 				821F88B329923FDE007E0E15 /* AddNewBeneficiaryUITests.swift in Sources */,
 				821F88B529923FDE007E0E15 /* AddNewBeneficiaryUITestsLaunchTests.swift in Sources */,
+				8215B6FD299D020600B76130 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

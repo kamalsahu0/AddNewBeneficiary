@@ -1,0 +1,14 @@
+{
+    "selectBank" : [
+        "Select Bank",
+        "KOTAK MAHINDRA BANK",
+        "AXIS BANK",
+        "BANK OF BARODA",
+        "BANK OF INDIA",
+        "BANK OF MAHARASHTRA",
+        "CANARA BANK",
+        "CENTRAL BANK OF INDIA"],
+    
+    "selectAccType" :
+    ["Select account type", "Saving", "Current", "Overdraft", "Cash Credit", "Loan", "NRE", "Credit Card"]
+}

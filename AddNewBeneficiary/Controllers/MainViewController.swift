@@ -1,0 +1,47 @@
+//
+//  MainViewController.swift
+//  AddNewBeneficiary
+//
+//  Created by Kamal Sahu on 15/02/23.
+//
+
+import UIKit
+
+class MainViewController: UIViewController {
+
+    let launchBtn = UIButton(type: .system)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        style()
+        layout()
+        loadJson()
+    }
+    
+    func style()
+    {
+        launchBtn.translatesAutoresizingMaskIntoConstraints = false
+        launchBtn.setTitle("LaunchAddNewBeneficiary", for: .normal)
+        launchBtn.configuration = .filled()
+        launchBtn.tintColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
+        launchBtn.addTarget(self, action: #selector(launchbuttonTapped(_:)), for: .touchUpInside)
+    }
+    
+    func layout()
+    {
+        view.addSubview(launchBtn)
+        
+        NSLayoutConstraint.activate([
+            launchBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            launchBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    @objc func launchbuttonTapped(_ sender: UIButton) {
+        let addNewBeneficiaryViewController = AddNewBeneficiaryViewController()
+         // addNewBeneficiaryViewController.title = "Add New Beneficiary"
+        navigationController?.pushViewController(addNewBeneficiaryViewController, animated: true)
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .white
+    }
+}

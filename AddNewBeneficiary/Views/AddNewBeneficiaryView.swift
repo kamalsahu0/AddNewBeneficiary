@@ -10,21 +10,21 @@ class AddNewBeneficiaryView: UIView {
     
     let details = UILabel()
     
-    let picker = UIPickerView()
-    let pickerTextField = UITextField()
-    let selectBank = ["Sbi", "HSBC", "Kotak"]
-    let bankImg = UIButton(type: .custom)
+    let bnkSltTextField = UITextField()
+    let sltAccTypeTxt = UITextField()
+    
+    let bankSltBtn = UIButton(type: .custom)
+    let selectAccTypeBtn = UIButton(type: .custom)
     
     let accountNumber = UITextField()
-    let confirmAccNumber = UITextField()
-    let nickName = UITextField()
-    let lebelData = UILabel()
-    let beneficiaryName = UITextField()
     
-    let pickerAccType = UIPickerView()
-    let sltAccTypeTxt = UITextField()
-    let selectAccType = ["Sbi", "HSBC", "Kotak"]
-    let selectAccImg = UIButton(type: .custom)
+    let confirmAccNumber = UITextField()
+    
+    let nickName = UITextField()
+    
+    let lebelData = UILabel()
+    
+    let beneficiaryName = UITextField()
     
     let stackView = UIStackView()
     let dividerView = UIView()
@@ -40,7 +40,6 @@ class AddNewBeneficiaryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         accStyle()
         accLayout()
         
@@ -49,9 +48,10 @@ class AddNewBeneficiaryView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 // MARK: - Select Bank horizontal stack
     lazy var bnkHStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [pickerTextField, bankImg])
+        let view = UIStackView(arrangedSubviews: [bnkSltTextField, bankSltBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         return view
@@ -104,11 +104,12 @@ class AddNewBeneficiaryView: UIView {
     
 // MARK: - Select Account type Horizontal StackView
     lazy var accTypeHStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [sltAccTypeTxt, selectAccImg])
+        let view = UIStackView(arrangedSubviews: [sltAccTypeTxt, selectAccTypeBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         return view
     }()
+    
 // MARK: - Select Account type Vertical StackView
     lazy var accTypeVStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [accTypeHStackView, dividerView5])
@@ -117,6 +118,7 @@ class AddNewBeneficiaryView: UIView {
         view.spacing = 1
         return view
     }()
+    
     // MARK: - CheckBox StackView
     lazy var checkBoxStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [checkboxButton, checkLabel, checkIcon])
@@ -131,7 +133,6 @@ class AddNewBeneficiaryView: UIView {
 extension AddNewBeneficiaryView {
     func accStyle()
     {
-        translatesAutoresizingMaskIntoConstraints = false
         
         //enter details lebel
         details.translatesAutoresizingMaskIntoConstraints = false
@@ -140,43 +141,40 @@ extension AddNewBeneficiaryView {
         details.font = .systemFont(ofSize: 20)
         
         //Select Bank dropDown Textfield
-        pickerTextField.translatesAutoresizingMaskIntoConstraints = false
-        pickerTextField.text = "Select Bank"
-        pickerTextField.delegate = self
-        picker.delegate = self
-        picker.dataSource = self
-        pickerTextField.inputView = picker
-        pickerTextField.font = .systemFont(ofSize: 20)
+        bnkSltTextField.translatesAutoresizingMaskIntoConstraints = false
+        bnkSltTextField.text = "Select Bank"
+        bnkSltTextField.delegate = self
+        bnkSltTextField.font = .systemFont(ofSize: 20)
         
         dividerView4.translatesAutoresizingMaskIntoConstraints = false
         dividerView4.backgroundColor = .secondarySystemFill
         
-        bankImg.translatesAutoresizingMaskIntoConstraints = false
-        bankImg.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-        bankImg.tintColor = .black
-        bankImg.sizeToFit()
-        bankImg.addTarget(self, action: #selector(bankImgSelected(_:)), for: .touchUpInside)
+        bankSltBtn.translatesAutoresizingMaskIntoConstraints = false
+        bankSltBtn.frame = CGRect(x: 0, y: 0, width: 200 , height: 100)
+        bankSltBtn.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        bankSltBtn.imageEdgeInsets = UIEdgeInsets(top: 20, left: 26, bottom: 20, right: 26)
+        bankSltBtn.tintColor = .black
+        bankSltBtn.contentMode = .scaleAspectFit
         
         //Enter Acc Number TexField
         accountNumber.translatesAutoresizingMaskIntoConstraints = false
         accountNumber.placeholder = "Please enter Account Number"
         accountNumber.delegate = self
-        dividerView.translatesAutoresizingMaskIntoConstraints = false
-        dividerView.backgroundColor = .secondarySystemFill
         accountNumber.clearButtonMode = .whileEditing
-        accountNumber.returnKeyType = .done
         accountNumber.font = .systemFont(ofSize: 20)
         
+        dividerView.translatesAutoresizingMaskIntoConstraints = false
+        dividerView.backgroundColor = .secondarySystemFill
         
         //Enter Confirm Acc Number TexField
         confirmAccNumber.translatesAutoresizingMaskIntoConstraints = false
         confirmAccNumber.placeholder = "Please enter Confirm Account Number"
         confirmAccNumber.delegate = self
-        dividerView1.translatesAutoresizingMaskIntoConstraints = false
-        dividerView1.backgroundColor = .secondarySystemFill
         confirmAccNumber.font = .systemFont(ofSize: 20)
         confirmAccNumber.clearButtonMode = .whileEditing
-        confirmAccNumber.returnKeyType = .done
+        
+        dividerView1.translatesAutoresizingMaskIntoConstraints = false
+        dividerView1.backgroundColor = .secondarySystemFill
         
         //Enter Nick Name texfield
         nickName.translatesAutoresizingMaskIntoConstraints = false
@@ -184,7 +182,6 @@ extension AddNewBeneficiaryView {
         nickName.font = .systemFont(ofSize: 20)
         nickName.delegate = self
         nickName.clearButtonMode = .whileEditing
-        nickName.returnKeyType = .done
         dividerView2.translatesAutoresizingMaskIntoConstraints = false
         dividerView2.backgroundColor = .secondarySystemFill
         
@@ -204,7 +201,6 @@ extension AddNewBeneficiaryView {
         beneficiaryName.font = .systemFont(ofSize: 20)
         beneficiaryName.delegate = self
         beneficiaryName.clearButtonMode = .whileEditing
-        beneficiaryName.returnKeyType = .done
         dividerView3.translatesAutoresizingMaskIntoConstraints = false
         dividerView3.backgroundColor = .secondarySystemFill
         
@@ -214,24 +210,22 @@ extension AddNewBeneficiaryView {
         sltAccTypeTxt.text = "Select account type"
         sltAccTypeTxt.font = .systemFont(ofSize: 20)
         sltAccTypeTxt.delegate = self
-        pickerAccType.delegate = self
-        pickerAccType.dataSource = self
-        sltAccTypeTxt.inputView = pickerAccType
+        
         dividerView5.translatesAutoresizingMaskIntoConstraints = false
         dividerView5.backgroundColor = .secondarySystemFill
         
-        selectAccImg.translatesAutoresizingMaskIntoConstraints = false
-        selectAccImg.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-        selectAccImg.tintColor = .black
-        selectAccImg.addTarget(self, action: #selector(AccTypeSelected(_:)), for: .touchUpInside)
-        
-        
+        selectAccTypeBtn.translatesAutoresizingMaskIntoConstraints = false
+        selectAccTypeBtn.frame = CGRect(x: 0, y: 0, width: 50 , height: 50)
+        selectAccTypeBtn.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        selectAccTypeBtn.imageEdgeInsets = UIEdgeInsets(top: 20, left: 26, bottom: 20, right: 26)
+        selectAccTypeBtn.tintColor = .black
+        selectAccTypeBtn.contentMode = .scaleAspectFit
+    
         //CheckBox Button
         checkboxButton.translatesAutoresizingMaskIntoConstraints = false
         checkboxButton.setImage(UIImage(systemName: "square"), for: .normal)
         checkboxButton.tintColor = .gray
         checkboxButton.addTarget(self, action: #selector(checkboxTapped(_:)), for: .touchUpInside)
-        
         
         //Label for checkbox
         checkLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -243,24 +237,13 @@ extension AddNewBeneficiaryView {
         checkIcon.translatesAutoresizingMaskIntoConstraints = false
         checkIcon.image = UIImage(systemName: "info.circle.fill")
         checkIcon.sizeToFit()
-        
-        
-        
     }
-    
     
     @objc func checkboxTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
         changeCheckboxImage()
     }
-    
-    @objc func bankImgSelected(_ sender: UIButton){
-        sender.isSelected.toggle()
-    }
-    
-    @objc func AccTypeSelected(_ sender: UIButton){
-        sender.isSelected.toggle()
-    }
+
     private func changeCheckboxImage() {
         if checkboxButton.isSelected {
             checkboxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
@@ -273,7 +256,6 @@ extension AddNewBeneficiaryView {
 // MARK: - Constraints
     func accLayout()
     {
-        
         addSubview(details)
         addSubview(bnkVStackView)
         addSubview(accountStackView)
@@ -320,7 +302,6 @@ extension AddNewBeneficiaryView {
         
         //NickName field
         NSLayoutConstraint.activate([
-            
             nickNameStackView.topAnchor.constraint(equalToSystemSpacingBelow: confirmAccStackView.bottomAnchor, multiplier: 7),
             nickNameStackView.leadingAnchor.constraint(equalTo: confirmAccStackView.leadingAnchor),
             nickNameStackView.trailingAnchor.constraint(equalTo: confirmAccStackView.trailingAnchor)
@@ -344,8 +325,8 @@ extension AddNewBeneficiaryView {
         
         //select Bank acc Type dropDown
         NSLayoutConstraint.activate([
-            accTypeHStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: accTypeHStackView.trailingAnchor, multiplier: 2),
+            accTypeHStackView.leadingAnchor.constraint(equalTo: bnkHStackView.leadingAnchor),
+            bnkHStackView.trailingAnchor.constraint(equalTo: accTypeHStackView.trailingAnchor, constant: -19),
             accTypeVStackView.topAnchor.constraint(equalToSystemSpacingBelow: bnfStackView.bottomAnchor, multiplier: 6),
             accTypeVStackView.leadingAnchor.constraint(equalTo: confirmAccStackView.leadingAnchor),
             accTypeVStackView.trailingAnchor.constraint(equalTo: confirmAccStackView.trailingAnchor)
@@ -363,52 +344,30 @@ extension AddNewBeneficiaryView {
     }
 }
 
-// MARK: - Extension AddNewBeneficiaryView TextFiled Delegate
-extension AddNewBeneficiaryView: UITextFieldDelegate
-{
+// MARK: - Extension AddNewBeneficiaryView TextField Delegate
+extension AddNewBeneficiaryView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        pickerTextField.endEditing(true)
-        accountNumber.endEditing(true)
-        confirmAccNumber.endEditing(true)
-        nickName.endEditing(true)
-        beneficiaryName.endEditing(true)
+//        bnkSltTextField.endEditing(true)
+//        accountNumber.endEditing(true)
+//        confirmAccNumber.endEditing(true)
+//        nickName.endEditing(true)
+//        beneficiaryName.endEditing(true)
         return true
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text != "" {
-            
-            return true
-        }
-        else
-        {
-            return false
-        }
-    }
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        if textField.text != "" {
+//
+//            return true
+//        }
+//        else
+//        {
+//            return false
+//        }
+//
+//    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
 }
-
-// MARK: -AddNewBeneficiaryView UIPickerView Delegate and DataSource
-extension AddNewBeneficiaryView: UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return selectBank.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return selectBank[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerTextField.text = selectBank[row]
-    }
-    
-}
-
