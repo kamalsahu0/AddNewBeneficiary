@@ -1,58 +1,52 @@
-////
-////  ViewController.swift
-////  AddNewBeneficiary
-////
-////  Created by Kamal Sahu on 10/02/23.
-////
 //
-//import UIKit
+//  ViewController.swift
+//  AddNewBeneficiary
 //
-//class ViewController: UIViewController {
-//    
-//    let tableView = UITableView()
-//    
-//    // MARK: - customer Demo data
-//    let customerData = [
-//        DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving"),
-//        DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving"),
-//        DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving"),
-//        DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving"),
-//        DataModel(selectBank: "Sbi", accNumber: "823832837424", confAccNumber: "823832837424", nickName: "Kamal", benName: "Kamal sahu", selectAccType: "Saving")
-//    ]
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.addSubview(tableView)
-//        tableView.dataSource = self
-//        tableView.delegate = self
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        setConstraints()
-//    }
-//    
-//    // MARK: - setConstraints
-//    func setConstraints() {
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
-//        ])
-//    }
-//    
-//}
+//  Created by Kamal Sahu on 10/02/23.
 //
-//// MARK: - Table view controller delegate and datasource
-//extension ViewController: UITableViewDataSource, UITableViewDelegate
-//{
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return customerData.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        let customerData = customerData[indexPath.row]
-//        cell.textLabel?.text = "\(customerData.selectBank), \(customerData.accNumber), \(customerData.nickName), \(customerData.benName), \(customerData.selectAccType)"
-//        return cell
-//    }
-//}
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    let tableView = UITableView()
+    
+    // MARK: - customer Demo data
+    let customerData = AddNewBeneficiaryView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        setConstraints()
+    }
+    
+    // MARK: - setConstraints
+    func setConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+    }
+    
+}
+
+// MARK: - Table view controller delegate and datasource
+extension ViewController: UITableViewDataSource, UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let customerData = customerData
+        cell.textLabel?.text = "\(customerData.bnkSltTextLabel.text!), \(customerData.sltAccTypeTextLabel.text!)"
+        return cell
+    }
+}

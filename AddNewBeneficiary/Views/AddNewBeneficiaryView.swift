@@ -9,24 +9,16 @@ import UIKit
 class AddNewBeneficiaryView: UIView {
     
     let details = UILabel()
-    
-    let bnkSltTextField = UITextField()
-    let sltAccTypeTxt = UITextField()
-    
+    let bnkSltTextLabel = UILabel()
+    let sltAccTypeTextLabel = UILabel()
     let bankSltBtn = UIButton(type: .custom)
     let selectAccTypeBtn = UIButton(type: .custom)
-    
     let accountNumber = UITextField()
-    
     let confirmAccNumber = UITextField()
-    
     let nickName = UITextField()
-    
     let lebelData = UILabel()
-    
     let beneficiaryName = UITextField()
     
-    let stackView = UIStackView()
     let dividerView = UIView()
     let dividerView1 = UIView()
     let dividerView2 = UIView()
@@ -38,11 +30,22 @@ class AddNewBeneficiaryView: UIView {
     let checkLabel = UILabel()
     let checkIcon = UIImageView()
     
+    lazy var ifscCode: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    lazy var dividerLabel: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    var ifsclabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         accStyle()
         accLayout()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -51,7 +54,7 @@ class AddNewBeneficiaryView: UIView {
     
 // MARK: - Select Bank horizontal stack
     lazy var bnkHStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [bnkSltTextField, bankSltBtn])
+        let view = UIStackView(arrangedSubviews: [bnkSltTextLabel, bankSltBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         return view
@@ -104,9 +107,10 @@ class AddNewBeneficiaryView: UIView {
     
 // MARK: - Select Account type Horizontal StackView
     lazy var accTypeHStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [sltAccTypeTxt, selectAccTypeBtn])
+        let view = UIStackView(arrangedSubviews: [sltAccTypeTextLabel, selectAccTypeBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
+        view.spacing = 1
         return view
     }()
     
@@ -124,38 +128,53 @@ class AddNewBeneficiaryView: UIView {
         let view = UIStackView(arrangedSubviews: [checkboxButton, checkLabel, checkIcon])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
-        view.spacing = 3
         return view
     }()
+    
+// MARK: - Select ifsc code Vertical StackView
+    lazy var ifscStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [ifsclabel, ifscCode, dividerLabel])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.spacing = 5
+        return view
+    }()
+    
 }
 
 // MARK: - Extension AddNewBeneficiaryView
 extension AddNewBeneficiaryView {
     func accStyle()
     {
-        
         //enter details lebel
         details.translatesAutoresizingMaskIntoConstraints = false
         details.text = "Enter Details"
         details.textColor = .init(red: 0.18, green: 0.1, blue: 1, alpha: 1)
         details.font = .systemFont(ofSize: 20)
         
-        //Select Bank dropDown Textfield
-        bnkSltTextField.translatesAutoresizingMaskIntoConstraints = false
-        bnkSltTextField.text = "Select Bank"
-        bnkSltTextField.delegate = self
-        bnkSltTextField.font = .systemFont(ofSize: 20)
+        //Select Bank dropDown lebel
+        bnkSltTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        bnkSltTextLabel.text = "Select Bank"
+        bnkSltTextLabel.font = .systemFont(ofSize: 20)
         
         dividerView4.translatesAutoresizingMaskIntoConstraints = false
         dividerView4.backgroundColor = .secondarySystemFill
         
         bankSltBtn.translatesAutoresizingMaskIntoConstraints = false
-        bankSltBtn.frame = CGRect(x: 0, y: 0, width: 200 , height: 100)
+        bankSltBtn.frame = CGRect(x: 0, y: 0, width: 50 , height: 50)
         bankSltBtn.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         bankSltBtn.imageEdgeInsets = UIEdgeInsets(top: 20, left: 26, bottom: 20, right: 26)
         bankSltBtn.tintColor = .black
-        bankSltBtn.contentMode = .scaleAspectFit
         
+        //ifsc code lebel
+        ifsclabel.translatesAutoresizingMaskIntoConstraints = false
+        ifsclabel.font = .systemFont(ofSize: 15)
+        ifsclabel.textColor = .gray
+        
+        ifscCode.translatesAutoresizingMaskIntoConstraints = false
+        ifscCode.font = .systemFont(ofSize: 20)
+        
+        dividerLabel.translatesAutoresizingMaskIntoConstraints = false
         //Enter Acc Number TexField
         accountNumber.translatesAutoresizingMaskIntoConstraints = false
         accountNumber.placeholder = "Please enter Account Number"
@@ -190,10 +209,10 @@ extension AddNewBeneficiaryView {
         lebelData.text = "Nickname help you recognise the beneficiary easily during selection. Nickname will not appear on your beneficiary's statement."
         lebelData.textColor = .darkGray
         lebelData.font = UIFont.systemFont(ofSize: 13)
-        lebelData.numberOfLines = 0
-        lebelData.preferredMaxLayoutWidth = 300
-        lebelData.lineBreakMode = NSLineBreakMode.byWordWrapping
-        lebelData.sizeToFit()
+        lebelData.numberOfLines = 3
+        
+        //lebelData.preferredMaxLayoutWidth = 300
+        //lebelData.lineBreakMode = NSLineBreakMode.byWordWrapping
         
         //Enter Beneficiary Name TexField
         beneficiaryName.translatesAutoresizingMaskIntoConstraints = false
@@ -201,16 +220,15 @@ extension AddNewBeneficiaryView {
         beneficiaryName.font = .systemFont(ofSize: 20)
         beneficiaryName.delegate = self
         beneficiaryName.clearButtonMode = .whileEditing
+        
         dividerView3.translatesAutoresizingMaskIntoConstraints = false
         dividerView3.backgroundColor = .secondarySystemFill
         
-        //Select Bank Type DropDown Textfield
-        sltAccTypeTxt.translatesAutoresizingMaskIntoConstraints = false
-        sltAccTypeTxt.translatesAutoresizingMaskIntoConstraints = false
-        sltAccTypeTxt.text = "Select account type"
-        sltAccTypeTxt.font = .systemFont(ofSize: 20)
-        sltAccTypeTxt.delegate = self
-        
+        //Select Bank Type DropDown lebel
+        sltAccTypeTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        sltAccTypeTextLabel.text = "Select account type"
+        sltAccTypeTextLabel.font = .systemFont(ofSize: 20)
+    
         dividerView5.translatesAutoresizingMaskIntoConstraints = false
         dividerView5.backgroundColor = .secondarySystemFill
         
@@ -223,8 +241,10 @@ extension AddNewBeneficiaryView {
     
         //CheckBox Button
         checkboxButton.translatesAutoresizingMaskIntoConstraints = false
+        checkboxButton.frame = CGRect(x: 0, y: 0, width: 100 , height: 50)
         checkboxButton.setImage(UIImage(systemName: "square"), for: .normal)
-        checkboxButton.tintColor = .gray
+        checkboxButton.imageEdgeInsets = UIEdgeInsets(top: 28, left: 40, bottom: 28, right: 40)
+        checkboxButton.tintColor = .lightGray
         checkboxButton.addTarget(self, action: #selector(checkboxTapped(_:)), for: .touchUpInside)
         
         //Label for checkbox
@@ -258,6 +278,7 @@ extension AddNewBeneficiaryView {
     {
         addSubview(details)
         addSubview(bnkVStackView)
+        addSubview(ifscStackView)
         addSubview(accountStackView)
         addSubview(confirmAccStackView)
         addSubview(nickNameStackView)
@@ -268,7 +289,7 @@ extension AddNewBeneficiaryView {
         
         //details Label
         NSLayoutConstraint.activate([
-            details.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 5),
+            details.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
             details.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
             trailingAnchor.constraint(equalToSystemSpacingAfter: details.trailingAnchor, multiplier: 1),
         ])
@@ -283,9 +304,18 @@ extension AddNewBeneficiaryView {
         ])
         dividerView4.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+        //Ifsc code field
+        NSLayoutConstraint.activate([
+            ifscStackView.topAnchor.constraint(equalToSystemSpacingBelow: bnkVStackView.bottomAnchor, multiplier: 4),
+            ifscStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: ifscStackView.trailingAnchor, multiplier: 1)
+            
+        ])
+        dividerLabel.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
         //Account Number field
         NSLayoutConstraint.activate([
-            accountStackView.topAnchor.constraint(equalToSystemSpacingBelow: bnkVStackView.bottomAnchor, multiplier: 12),
+            accountStackView.topAnchor.constraint(equalToSystemSpacingBelow: ifscStackView.bottomAnchor, multiplier: 5),
             accountStackView.leadingAnchor.constraint(equalTo: bnkVStackView.leadingAnchor),
             accountStackView.trailingAnchor.constraint(equalTo: bnkVStackView.trailingAnchor ),
             
@@ -326,46 +356,47 @@ extension AddNewBeneficiaryView {
         //select Bank acc Type dropDown
         NSLayoutConstraint.activate([
             accTypeHStackView.leadingAnchor.constraint(equalTo: bnkHStackView.leadingAnchor),
-            bnkHStackView.trailingAnchor.constraint(equalTo: accTypeHStackView.trailingAnchor, constant: -19),
+            bnkHStackView.trailingAnchor.constraint(equalTo: accTypeHStackView.trailingAnchor),
             accTypeVStackView.topAnchor.constraint(equalToSystemSpacingBelow: bnfStackView.bottomAnchor, multiplier: 6),
             accTypeVStackView.leadingAnchor.constraint(equalTo: confirmAccStackView.leadingAnchor),
             accTypeVStackView.trailingAnchor.constraint(equalTo: confirmAccStackView.trailingAnchor)
         ])
         dividerView5.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
+
         //checkBox button
         NSLayoutConstraint.activate([
             checkBoxStackView.topAnchor.constraint(equalToSystemSpacingBelow: accTypeVStackView.bottomAnchor, multiplier: 1),
-            checkboxButton.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            checkLabel.trailingAnchor.constraint(equalToSystemSpacingAfter: checkLabel.trailingAnchor, multiplier: 2),
-            checkLabel.leadingAnchor.constraint(equalTo: checkboxButton.leadingAnchor,constant: 30),
+            checkboxButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10 ),
+
+            checkLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 60),
+           
         ])
-        
+
     }
 }
 
 // MARK: - Extension AddNewBeneficiaryView TextField Delegate
 extension AddNewBeneficiaryView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        bnkSltTextField.endEditing(true)
-//        accountNumber.endEditing(true)
-//        confirmAccNumber.endEditing(true)
-//        nickName.endEditing(true)
-//        beneficiaryName.endEditing(true)
+        //        bnkSltTextField.endEditing(true)
+        //        accountNumber.endEditing(true)
+        //        confirmAccNumber.endEditing(true)
+        //        nickName.endEditing(true)
+        //        beneficiaryName.endEditing(true)
         return true
     }
     
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if textField.text != "" {
-//
-//            return true
-//        }
-//        else
-//        {
-//            return false
-//        }
-//
-//    }
+    //    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    //        if textField.text != "" {
+    //
+    //            return true
+    //        }
+    //        else
+    //        {
+    //            return false
+    //        }
+    //
+    //    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         

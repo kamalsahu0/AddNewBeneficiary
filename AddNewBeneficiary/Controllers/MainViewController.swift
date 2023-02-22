@@ -8,20 +8,19 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     let launchBtn = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
-        loadJson()
     }
     
     func style()
     {
         launchBtn.translatesAutoresizingMaskIntoConstraints = false
-        launchBtn.setTitle("LaunchAddNewBeneficiary", for: .normal)
+        launchBtn.setTitle("Launch AddNewBeneficiary", for: .normal)
         launchBtn.configuration = .filled()
         launchBtn.tintColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
         launchBtn.addTarget(self, action: #selector(launchbuttonTapped(_:)), for: .touchUpInside)
@@ -39,7 +38,7 @@ class MainViewController: UIViewController {
     
     @objc func launchbuttonTapped(_ sender: UIButton) {
         let addNewBeneficiaryViewController = AddNewBeneficiaryViewController()
-         // addNewBeneficiaryViewController.title = "Add New Beneficiary"
+        // addNewBeneficiaryViewController.title = "Add New Beneficiary"
         navigationController?.pushViewController(addNewBeneficiaryViewController, animated: true)
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white

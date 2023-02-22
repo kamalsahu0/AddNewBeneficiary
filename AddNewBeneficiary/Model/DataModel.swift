@@ -7,29 +7,13 @@
 
 import Foundation
 
-struct DataModel: Codable{
-    let selectBank: [String]
-//    let accNumber: String
-//    let confAccNumber: String
-//    let nickName: String
-//    let benName: String
+// MARK: - DataModel
+struct DataModel: Codable {
+    var selectBank: [SelectBank]
     let selectAccType: [String]
 }
 
-func loadJson()
-{
-
-    if let url = Bundle.main.url(forResource: "DataModelJson", withExtension: "json") {
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let jsonData = try decoder.decode([DataModel].self, from: data)
-            print(jsonData)
-
-        } catch {
-            print("error:\(error)")
-        }
-    }
+// MARK: - SelectBank
+struct SelectBank: Codable {
+    var bankName, ifscCode: String
 }
-
-

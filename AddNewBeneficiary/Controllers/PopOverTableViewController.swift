@@ -14,12 +14,29 @@ class PopOverTableViewController: UIViewController {
     
     var dataArray: [String]
     
-    var textField: UITextField
+    var dataModel: [DataModel]?
+
+    var constantName : String
     
-    init(dataArray: [String], textField: UITextField ) {
+    var label: UILabel
+    
+    var ifscLabel: UILabel?
+    
+    var ifscCode: UILabel?
+    
+    var dividerLabel: UIView?
+    
+    init(dataArray: [String], label: UILabel, constantValue: String, ifscLabel: UILabel?, ifscCode: UILabel?, dividerLabel: UIView?, dataModel: [DataModel]?) {
+        
         self.dataArray = dataArray
-        self.textField = textField
+        self.dataModel = dataModel
+        self.label = label
+        self.constantName = constantValue
+        self.ifscLabel = ifscLabel
+        self.ifscCode = ifscCode
+        self.dividerLabel = dividerLabel
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -33,10 +50,9 @@ class PopOverTableViewController: UIViewController {
         tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorInset = .zero
-       // tableView.layer.borderWidth = 0.5
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         setConstraints()
+        dataArray.insert(constantName, at: 0)
     }
     
     // MARK: - setConstraints
@@ -59,15 +75,26 @@ extension PopOverTableViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         cell.textLabel?.text = dataArray[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedText = dataArray[indexPath.row]
-        textField.text = selectedText
         
+        let selectedText = dataArray[indexPath.row]
+        label.text = selectedText
+        
+        if indexPath.row != 0 && indexPath.row != 1 {
+            ifscLabel?.text = "Enter IFSC"
+            ifscCode?.text = dataModel?[0].selectBank[indexPath.row - 1].ifscCode
+            dividerLabel?.backgroundColor = .secondarySystemFill
+            
+        }
+        else {
+            ifscLabel?.text = ""
+            ifscCode?.text = ""
+            dividerLabel?.backgroundColor = .clear
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
