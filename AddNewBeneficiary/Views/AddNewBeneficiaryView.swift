@@ -8,40 +8,6 @@ import UIKit
 
 class AddNewBeneficiaryView: UIView {
     
-    let details = UILabel()
-    let bnkSltTextLabel = UILabel()
-    let sltAccTypeTextLabel = UILabel()
-    let bankSltBtn = UIButton(type: .custom)
-    let selectAccTypeBtn = UIButton(type: .custom)
-    let accountNumber = UITextField()
-    let confirmAccNumber = UITextField()
-    let nickName = UITextField()
-    let lebelData = UILabel()
-    let beneficiaryName = UITextField()
-    
-    let dividerView = UIView()
-    let dividerView1 = UIView()
-    let dividerView2 = UIView()
-    let dividerView3 = UIView()
-    let dividerView4 = UIView()
-    let dividerView5 = UIView()
-    
-    let checkboxButton = UIButton(type: .custom)
-    let checkLabel = UILabel()
-    let checkIcon = UIImageView()
-    
-    lazy var ifscCode: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    lazy var dividerLabel: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    var ifsclabel = UILabel()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         accStyle()
@@ -52,7 +18,7 @@ class AddNewBeneficiaryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: - Select Bank horizontal stack
+    // MARK: - Select Bank horizontal stack
     lazy var bnkHStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [bnkSltTextLabel, bankSltBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +26,7 @@ class AddNewBeneficiaryView: UIView {
         return view
     }()
     
-// MARK: - Select Bank Vertical stack
+    // MARK: - Select Bank Vertical stack
     lazy var bnkVStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [bnkHStackView, dividerView4])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +35,7 @@ class AddNewBeneficiaryView: UIView {
         return view
     }()
     
-// MARK: - AccountStackView
+    // MARK: - AccountStackView
     lazy var accountStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [accountNumber,dividerView])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +44,7 @@ class AddNewBeneficiaryView: UIView {
         return view
     }()
     
-// MARK: - Confirm AccountStackView
+    // MARK: - Confirm AccountStackView
     lazy var confirmAccStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [confirmAccNumber,dividerView1])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +53,7 @@ class AddNewBeneficiaryView: UIView {
         return view
     }()
     
-// MARK: - nickName StackView
+    // MARK: - nickName StackView
     lazy var nickNameStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [nickName, dividerView2])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -95,8 +61,8 @@ class AddNewBeneficiaryView: UIView {
         view.spacing = 5
         return view
     }()
-
-// MARK: - Beneficiary StackView
+    
+    // MARK: - Beneficiary StackView
     lazy var bnfStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [beneficiaryName, dividerView3])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +71,7 @@ class AddNewBeneficiaryView: UIView {
         return view
     }()
     
-// MARK: - Select Account type Horizontal StackView
+    // MARK: - Select Account type Horizontal StackView
     lazy var accTypeHStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [sltAccTypeTextLabel, selectAccTypeBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -114,7 +80,7 @@ class AddNewBeneficiaryView: UIView {
         return view
     }()
     
-// MARK: - Select Account type Vertical StackView
+    // MARK: - Select Account type Vertical StackView
     lazy var accTypeVStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [accTypeHStackView, dividerView5])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -131,7 +97,7 @@ class AddNewBeneficiaryView: UIView {
         return view
     }()
     
-// MARK: - Select ifsc code Vertical StackView
+    // MARK: - Select ifsc code Vertical StackView
     lazy var ifscStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [ifsclabel, ifscCode, dividerLabel])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -228,7 +194,7 @@ extension AddNewBeneficiaryView {
         sltAccTypeTextLabel.translatesAutoresizingMaskIntoConstraints = false
         sltAccTypeTextLabel.text = "Select account type"
         sltAccTypeTextLabel.font = .systemFont(ofSize: 20)
-    
+        
         dividerView5.translatesAutoresizingMaskIntoConstraints = false
         dividerView5.backgroundColor = .secondarySystemFill
         
@@ -238,7 +204,7 @@ extension AddNewBeneficiaryView {
         selectAccTypeBtn.imageEdgeInsets = UIEdgeInsets(top: 20, left: 26, bottom: 20, right: 26)
         selectAccTypeBtn.tintColor = .black
         selectAccTypeBtn.contentMode = .scaleAspectFit
-    
+        
         //CheckBox Button
         checkboxButton.translatesAutoresizingMaskIntoConstraints = false
         checkboxButton.frame = CGRect(x: 0, y: 0, width: 100 , height: 50)
@@ -263,7 +229,7 @@ extension AddNewBeneficiaryView {
         sender.isSelected.toggle()
         changeCheckboxImage()
     }
-
+    
     private func changeCheckboxImage() {
         if checkboxButton.isSelected {
             checkboxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
@@ -273,7 +239,7 @@ extension AddNewBeneficiaryView {
         }
     }
     
-// MARK: - Constraints
+    // MARK: - Constraints
     func accLayout()
     {
         addSubview(details)
@@ -362,41 +328,24 @@ extension AddNewBeneficiaryView {
             accTypeVStackView.trailingAnchor.constraint(equalTo: confirmAccStackView.trailingAnchor)
         ])
         dividerView5.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
+        
         //checkBox button
         NSLayoutConstraint.activate([
             checkBoxStackView.topAnchor.constraint(equalToSystemSpacingBelow: accTypeVStackView.bottomAnchor, multiplier: 1),
             checkboxButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10 ),
-
+            
             checkLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 60),
-           
+            
         ])
-
+        
     }
 }
 
 // MARK: - Extension AddNewBeneficiaryView TextField Delegate
 extension AddNewBeneficiaryView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //        bnkSltTextField.endEditing(true)
-        //        accountNumber.endEditing(true)
-        //        confirmAccNumber.endEditing(true)
-        //        nickName.endEditing(true)
-        //        beneficiaryName.endEditing(true)
         return true
     }
-    
-    //    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-    //        if textField.text != "" {
-    //
-    //            return true
-    //        }
-    //        else
-    //        {
-    //            return false
-    //        }
-    //
-    //    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         

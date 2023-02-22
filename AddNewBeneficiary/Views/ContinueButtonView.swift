@@ -9,8 +9,6 @@ import UIKit
 
 class ContinueButtonView: UIView {
     
-    let continueBtn = UIButton(type: .custom)
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         style()

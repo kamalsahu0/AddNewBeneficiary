@@ -23,7 +23,6 @@
 		821F88C92992694E007E0E15 /* ContinueButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F88C62992694E007E0E15 /* ContinueButtonView.swift */; };
 		8256B87D29A5F87D00C938A6 /* Globalconstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8256B87C29A5F87D00C938A6 /* Globalconstant.swift */; };
 		8256B88929A63D4200C938A6 /* UIViewController + Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8256B88829A63D4200C938A6 /* UIViewController + Utils.swift */; };
-		82611F3E2996524A00344828 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82611F3D2996524A00344828 /* ViewController.swift */; };
 		82611F422996694000344828 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82611F412996694000344828 /* DataModel.swift */; };
 		829797FC2992B7A90088C09C /* AddNewBeneficiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829797FB2992B7A90088C09C /* AddNewBeneficiaryView.swift */; };
 		82C29555299F7A9F00518F6D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C29554299F7A9F00518F6D /* Api.swift */; };
@@ -64,7 +63,6 @@
 		821F88C62992694E007E0E15 /* ContinueButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueButtonView.swift; sourceTree = "<group>"; };
 		8256B87C29A5F87D00C938A6 /* Globalconstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globalconstant.swift; sourceTree = "<group>"; };
 		8256B88829A63D4200C938A6 /* UIViewController + Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Utils.swift"; sourceTree = "<group>"; };
-		82611F3D2996524A00344828 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82611F412996694000344828 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		829797FB2992B7A90088C09C /* AddNewBeneficiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBeneficiaryView.swift; sourceTree = "<group>"; };
 		82C29554299F7A9F00518F6D /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				8215B6FA299D020600B76130 /* MainViewController.swift */,
 				821F889229923FDC007E0E15 /* AddNewBeneficiaryViewController.swift */,
 				8215B6F6299BFC7B00B76130 /* PopOverTableViewController.swift */,
-				82611F3D2996524A00344828 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -340,7 +337,6 @@
 				821F88C72992694E007E0E15 /* ContinueButtonView.swift in Sources */,
 				8256B88929A63D4200C938A6 /* UIViewController + Utils.swift in Sources */,
 				82C29555299F7A9F00518F6D /* Api.swift in Sources */,
-				82611F3E2996524A00344828 /* ViewController.swift in Sources */,
 				82611F422996694000344828 /* DataModel.swift in Sources */,
 				8215B6F7299BFC7B00B76130 /* PopOverTableViewController.swift in Sources */,
 				829797FC2992B7A90088C09C /* AddNewBeneficiaryView.swift in Sources */,

@@ -1,37 +1,37 @@
 [
     {
-    "selectBank":
-    [
-        {
-            "bankName" : "KOTAK MAHINDRA BANK",
-            "ifscCode" : "KKBK0000726"
-        },
-        {
-            "bankName" : "AXIS BANK",
-            "ifscCode" : "UTIB0000037"
-        },
-        {
-            "bankName" : "BANK OF BARODA",
-            "ifscCode" : "BARB0POOCAM"
-        },
-        {
-            "bankName" : "BANK OF INDIA",
-            "ifscCode" : "BKID0000559"
-        },
-        {
-            "bankName" : "BANK OF MAHARASHTRA",
-            "ifscCode" : "MAHB0001150"
-        },
-        {
-            "bankName" : "CANARA BANK",
-            "ifscCode" : "CNRB0008355"
-        },
-        {
-            "bankName" : "CENTRAL BANK OF INDIA",
-            "ifscCode" : "CBIN0280661"
-        }
-    ],
-    "selectAccType" :
-    ["Saving", "Current", "Overdraft", "Cash Credit", "Loan", "NRE", "Credit Card"]
-}
+        "selectBank":
+        [
+            {
+                "bankName" : "KOTAK MAHINDRA BANK",
+                "ifscCode" : "KKBK0000726"
+            },
+            {
+                "bankName" : "AXIS BANK",
+                "ifscCode" : "UTIB0000037"
+            },
+            {
+                "bankName" : "BANK OF BARODA",
+                "ifscCode" : "BARB0POOCAM"
+            },
+            {
+                "bankName" : "BANK OF INDIA",
+                "ifscCode" : "BKID0000559"
+            },
+            {
+                "bankName" : "BANK OF MAHARASHTRA",
+                "ifscCode" : "MAHB0001150"
+            },
+            {
+                "bankName" : "CANARA BANK",
+                "ifscCode" : "CNRB0008355"
+            },
+            {
+                "bankName" : "CENTRAL BANK OF INDIA",
+                "ifscCode" : "CBIN0280661"
+            }
+        ],
+        "selectAccType" :
+        ["Saving", "Current", "Overdraft", "Cash Credit", "Loan", "NRE", "Credit Card"]
+    }
 ]

@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - DataModel
 struct DataModel: Codable {
-    var selectBank: [SelectBank]
+    let selectBank: [SelectBank]
     let selectAccType: [String]
 }
 
 // MARK: - SelectBank
 struct SelectBank: Codable {
-    var bankName, ifscCode: String
+    let bankName, ifscCode: String
 }

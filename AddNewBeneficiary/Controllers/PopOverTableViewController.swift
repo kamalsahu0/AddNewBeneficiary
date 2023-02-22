@@ -15,7 +15,7 @@ class PopOverTableViewController: UIViewController {
     var dataArray: [String]
     
     var dataModel: [DataModel]?
-
+    
     var constantName : String
     
     var label: UILabel

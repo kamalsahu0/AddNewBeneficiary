@@ -8,8 +8,6 @@ import UIKit
 
 class AddNewBeneficiaryViewController: UIViewController {
     
-    var buttonView = ContinueButtonView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         changeStatusBarColor()
@@ -17,6 +15,7 @@ class AddNewBeneficiaryViewController: UIViewController {
         style()
         layout()
     }
+    
     // MARK: - ScrollView
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -60,12 +59,12 @@ extension AddNewBeneficiaryViewController  {
         
         view.backgroundColor = .secondarySystemBackground
         addNewBeneficiaryView.translatesAutoresizingMaskIntoConstraints = false
-        addNewBeneficiaryView.bankSltBtn.addTarget(self, action: #selector(bnkSltButtonTapped(_:)), for: .touchUpInside)
-        addNewBeneficiaryView.selectAccTypeBtn.addTarget(self, action: #selector(selectAccTypeBtnTapped(_:)), for: .touchUpInside)
+        bankSltBtn.addTarget(self, action: #selector(bnkSltButtonTapped(_:)), for: .touchUpInside)
+        selectAccTypeBtn.addTarget(self, action: #selector(selectAccTypeBtnTapped(_:)), for: .touchUpInside)
         
         
         buttonView.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.continueBtn.addTarget(self, action: #selector(continueBtnAction(_:)), for: .touchUpInside)
+        continueBtn.addTarget(self, action: #selector(continueBtnAction(_:)), for: .touchUpInside)
     }
     
     // MARK: - layout Constraints
@@ -96,9 +95,6 @@ extension AddNewBeneficiaryViewController  {
     @objc func continueBtnAction(_ sender:UIButton!)
     {
         print("Button tapped")
-        let vc = ViewController()
-        vc.title = "Beneficiary Details"
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -135,10 +131,10 @@ extension AddNewBeneficiaryViewController: UIPopoverPresentationControllerDelega
         
         showPopover(sender, dataArray: jsonData?[0].selectBank.map({ bnk in
             bnk.bankName
-        }) ?? [], label: addNewBeneficiaryView.bnkSltTextLabel, constantValue: selectBankConst, ifscLabel: addNewBeneficiaryView.ifsclabel, ifscCode: addNewBeneficiaryView.ifscCode, dividerLabel: addNewBeneficiaryView.dividerLabel, dataModel: jsonData)
+        }) ?? [], label: bnkSltTextLabel, constantValue: selectBankConst, ifscLabel: ifsclabel, ifscCode: ifscCode, dividerLabel: dividerLabel, dataModel: jsonData)
     }
     
     @objc func selectAccTypeBtnTapped(_ sender: UIButton){
-        showPopover(sender, dataArray: jsonData?[0].selectAccType ?? [], label: addNewBeneficiaryView.sltAccTypeTextLabel, constantValue: sltAccTypeConst, ifscLabel: nil, ifscCode: nil, dividerLabel: nil, dataModel: nil)
+        showPopover(sender, dataArray: jsonData?[0].selectAccType ?? [], label: sltAccTypeTextLabel, constantValue: sltAccTypeConst, ifscLabel: nil, ifscCode: nil, dividerLabel: nil, dataModel: nil)
     }
 }

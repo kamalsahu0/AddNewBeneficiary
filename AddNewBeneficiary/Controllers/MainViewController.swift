@@ -9,8 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let launchBtn = UIButton(type: .system)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
