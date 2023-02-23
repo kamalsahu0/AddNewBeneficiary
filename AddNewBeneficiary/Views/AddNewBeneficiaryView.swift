@@ -145,8 +145,15 @@ extension AddNewBeneficiaryView {
         accountNumber.translatesAutoresizingMaskIntoConstraints = false
         accountNumber.placeholder = "Please enter Account Number"
         accountNumber.delegate = self
-        accountNumber.clearButtonMode = .whileEditing
+        accountNumber.autocorrectionType = .no
+        accountNumber.autocapitalizationType = .none
+        accountNumber.isSecureTextEntry = true
         accountNumber.font = .systemFont(ofSize: 20)
+        accountNumber.delegate = self
+        
+        AccountNumberError.translatesAutoresizingMaskIntoConstraints = false
+        AccountNumberError.textColor = .red
+        AccountNumberError.font = .systemFont(ofSize: 14)
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .secondarySystemFill
@@ -155,8 +162,10 @@ extension AddNewBeneficiaryView {
         confirmAccNumber.translatesAutoresizingMaskIntoConstraints = false
         confirmAccNumber.placeholder = "Please enter Confirm Account Number"
         confirmAccNumber.delegate = self
+        confirmAccNumber.autocorrectionType = .no
+        confirmAccNumber.autocapitalizationType = .none
         confirmAccNumber.font = .systemFont(ofSize: 20)
-        confirmAccNumber.clearButtonMode = .whileEditing
+        //        confirmAccNumber.clearButtonMode = .whileEditing
         
         dividerView1.translatesAutoresizingMaskIntoConstraints = false
         dividerView1.backgroundColor = .secondarySystemFill
@@ -166,7 +175,8 @@ extension AddNewBeneficiaryView {
         nickName.placeholder = "Set a nickname"
         nickName.font = .systemFont(ofSize: 20)
         nickName.delegate = self
-        nickName.clearButtonMode = .whileEditing
+        nickName.autocorrectionType = .no
+        nickName.autocapitalizationType = .none
         dividerView2.translatesAutoresizingMaskIntoConstraints = false
         dividerView2.backgroundColor = .secondarySystemFill
         
@@ -185,6 +195,8 @@ extension AddNewBeneficiaryView {
         beneficiaryName.placeholder = "Enter beneficiary name"
         beneficiaryName.font = .systemFont(ofSize: 20)
         beneficiaryName.delegate = self
+        beneficiaryName.autocorrectionType = .no
+        beneficiaryName.autocapitalizationType = .none
         beneficiaryName.clearButtonMode = .whileEditing
         
         dividerView3.translatesAutoresizingMaskIntoConstraints = false
@@ -246,6 +258,7 @@ extension AddNewBeneficiaryView {
         addSubview(bnkVStackView)
         addSubview(ifscStackView)
         addSubview(accountStackView)
+        addSubview(AccountNumberError)
         addSubview(confirmAccStackView)
         addSubview(nickNameStackView)
         addSubview(lebelData)
@@ -285,8 +298,16 @@ extension AddNewBeneficiaryView {
             accountStackView.leadingAnchor.constraint(equalTo: bnkVStackView.leadingAnchor),
             accountStackView.trailingAnchor.constraint(equalTo: bnkVStackView.trailingAnchor ),
             
+            
         ])
         dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        // Account error Message
+        NSLayoutConstraint.activate([
+            AccountNumberError.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 0.5),
+            AccountNumberError.leadingAnchor.constraint(equalTo: dividerView.leadingAnchor),
+            dividerView.trailingAnchor.constraint(equalTo: AccountNumberError.trailingAnchor)
+        ])
         
         //Confirm Account Number field
         NSLayoutConstraint.activate([
@@ -344,10 +365,55 @@ extension AddNewBeneficiaryView {
 // MARK: - Extension AddNewBeneficiaryView TextField Delegate
 extension AddNewBeneficiaryView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("nkns")
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        print("")
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        
+        if string.isEmpty {
+            return true // allow the deletion
+        }
+        
+        if (textField == accountNumber) || (textField == confirmAccNumber)
+        {
+            let regex = try! NSRegularExpression(pattern: "[0-9]+")
+               let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
+            
+            if invalidAccountNumber(textField)
+            {
+                AccountNumberError.text = "Account number must be 10 digit in length"
+                dividerView.backgroundColor = .red
+                AccountNumberError.isHidden = false
+            }
+            else
+            {
+                dividerView.backgroundColor = .secondarySystemFill
+                AccountNumberError.isHidden = true
+            }
+            
+            return isValid
+            
+        }
+        return true
+        
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if textField == accountNumber {
+            print("Enter Account Number")
+        }
+        else if textField == confirmAccNumber
+        {
+            print("Enter Confirm Account Number")
+        }
+        
+        return true
     }
 }

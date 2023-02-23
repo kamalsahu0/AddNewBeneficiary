@@ -24,6 +24,7 @@
 		8256B87D29A5F87D00C938A6 /* Globalconstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8256B87C29A5F87D00C938A6 /* Globalconstant.swift */; };
 		8256B88929A63D4200C938A6 /* UIViewController + Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8256B88829A63D4200C938A6 /* UIViewController + Utils.swift */; };
 		82611F422996694000344828 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82611F412996694000344828 /* DataModel.swift */; };
+		8285763E29A7CFA9007F43D2 /* ValidationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8285763D29A7CFA9007F43D2 /* ValidationForm.swift */; };
 		829797FC2992B7A90088C09C /* AddNewBeneficiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829797FB2992B7A90088C09C /* AddNewBeneficiaryView.swift */; };
 		82C29555299F7A9F00518F6D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C29554299F7A9F00518F6D /* Api.swift */; };
 		82C2955929A259FD00518F6D /* DataModelJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 82C2955829A259FD00518F6D /* DataModelJson.json */; };
@@ -64,6 +65,7 @@
 		8256B87C29A5F87D00C938A6 /* Globalconstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globalconstant.swift; sourceTree = "<group>"; };
 		8256B88829A63D4200C938A6 /* UIViewController + Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Utils.swift"; sourceTree = "<group>"; };
 		82611F412996694000344828 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		8285763D29A7CFA9007F43D2 /* ValidationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationForm.swift; sourceTree = "<group>"; };
 		829797FB2992B7A90088C09C /* AddNewBeneficiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBeneficiaryView.swift; sourceTree = "<group>"; };
 		82C29554299F7A9F00518F6D /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		82C2955829A259FD00518F6D /* DataModelJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DataModelJson.json; sourceTree = "<group>"; };
@@ -122,7 +124,6 @@
 				821F88C129926869007E0E15 /* Views */,
 				82611F3F299663E400344828 /* Controllers */,
 				8256B88729A63C7A00C938A6 /* Utils */,
-				8256B87E29A630CF00C938A6 /* ConstantFile */,
 				821F888E29923FDC007E0E15 /* AppDelegate.swift */,
 			);
 			path = AddNewBeneficiary;
@@ -154,18 +155,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8256B87E29A630CF00C938A6 /* ConstantFile */ = {
-			isa = PBXGroup;
-			children = (
-				8256B87C29A5F87D00C938A6 /* Globalconstant.swift */,
-			);
-			path = ConstantFile;
-			sourceTree = "<group>";
-		};
 		8256B88729A63C7A00C938A6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				8256B88829A63D4200C938A6 /* UIViewController + Utils.swift */,
+				8256B87C29A5F87D00C938A6 /* Globalconstant.swift */,
+				8285763D29A7CFA9007F43D2 /* ValidationForm.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -333,6 +328,7 @@
 			files = (
 				8256B87D29A5F87D00C938A6 /* Globalconstant.swift in Sources */,
 				821F889329923FDC007E0E15 /* AddNewBeneficiaryViewController.swift in Sources */,
+				8285763E29A7CFA9007F43D2 /* ValidationForm.swift in Sources */,
 				821F888F29923FDC007E0E15 /* AppDelegate.swift in Sources */,
 				821F88C72992694E007E0E15 /* ContinueButtonView.swift in Sources */,
 				8256B88929A63D4200C938A6 /* UIViewController + Utils.swift in Sources */,

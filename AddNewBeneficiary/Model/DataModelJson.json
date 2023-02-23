@@ -29,6 +29,42 @@
             {
                 "bankName" : "CENTRAL BANK OF INDIA",
                 "ifscCode" : "CBIN0280661"
+            },
+            {
+                "bankName" : "CITI BANK",
+                "ifscCode" : "CITI0000005"
+            },
+            {
+                "bankName" : "FEDERAL BANK LTD.",
+                "ifscCode" : "FDRL0001348"
+            },
+            {
+                "bankName" : "HDFC BANK LTD",
+                "ifscCode" : "HDFC0000185"
+            },
+            {
+                "bankName" : "ICICI BANK LTD",
+                "ifscCode" : "ICIC0006997"
+            },
+            {
+                "bankName" : "UNION BANK OF INDIA",
+                "ifscCode" : "UBIN0554596"
+            },
+            {
+                "bankName" : "STATE BANK OF INDIA",
+                "ifscCode" : "SBIN0000454"
+            },
+            {
+                "bankName" : "INDUSIND BANK",
+                "ifscCode" : "INDB0000271"
+            },
+            {
+                "bankName" : "IDBI BANK",
+                "ifscCode" : "IBKL0001583"
+            },
+            {
+                "bankName" : "OTHER BANKS",
+                "ifscCode" : " "
             }
         ],
         "selectAccType" :

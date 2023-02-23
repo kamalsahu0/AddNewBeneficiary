@@ -94,7 +94,13 @@ extension AddNewBeneficiaryViewController  {
     //Continue btn Tapped
     @objc func continueBtnAction(_ sender:UIButton!)
     {
-        print("Button tapped")
+        selectBankType(bnkSltText: bnkSltTextLabel)
+        
+        selectAccType(sltAccTypeText: sltAccTypeTextLabel)
+        
+        //        if (accountNumber.text?.isAccNumValid)! {
+        //            print("Valid Account number")
+        //        }
     }
 }
 
@@ -126,15 +132,45 @@ extension AddNewBeneficiaryViewController: UIPopoverPresentationControllerDelega
         return .none
     }
     
+    func selectBankType(bnkSltText: UILabel?)  {
+        
+        if bnkSltText?.text == selectBankConst
+        {
+            let refreshAlert = UIAlertController(title: "Kotak Mahindra Bank", message: "Please select the Bank", preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(refreshAlert, animated: true, completion: nil)
+        }
+        else
+        {
+            debugPrint("Bank Selected")
+        }
+    }
+    
+    func selectAccType(sltAccTypeText: UILabel?) {
+        
+        if sltAccTypeText?.text == sltAccTypeConst
+        {
+            let refreshAlert = UIAlertController(title: "Kotak Mahindra Bank", message: "Please select the account type", preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(refreshAlert, animated: true, completion: nil)
+        }
+        else
+        {
+            debugPrint("Account type Selected")
+        }
+    }
+    
     
     @objc func bnkSltButtonTapped(_ sender: UIButton) {
         
         showPopover(sender, dataArray: jsonData?[0].selectBank.map({ bnk in
             bnk.bankName
         }) ?? [], label: bnkSltTextLabel, constantValue: selectBankConst, ifscLabel: ifsclabel, ifscCode: ifscCode, dividerLabel: dividerLabel, dataModel: jsonData)
+        
     }
     
     @objc func selectAccTypeBtnTapped(_ sender: UIButton){
         showPopover(sender, dataArray: jsonData?[0].selectAccType ?? [], label: sltAccTypeTextLabel, constantValue: sltAccTypeConst, ifscLabel: nil, ifscCode: nil, dividerLabel: nil, dataModel: nil)
     }
 }
+

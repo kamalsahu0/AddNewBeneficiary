@@ -53,3 +53,6 @@ let ifsclabel = UILabel()
 let ifscCode = UILabel()
 // MARK: - ifsc code divider view
 let dividerLabel = UIView()
+
+
+var AccountNumberError = UILabel()
