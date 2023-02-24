@@ -98,9 +98,9 @@ extension AddNewBeneficiaryViewController  {
         
         selectAccType(sltAccTypeText: sltAccTypeTextLabel)
         
-        //        if (accountNumber.text?.isAccNumValid)! {
-        //            print("Valid Account number")
-        //        }
+        if validateForm() {
+            print("Submit")
+        }
     }
 }
 
@@ -166,7 +166,6 @@ extension AddNewBeneficiaryViewController: UIPopoverPresentationControllerDelega
         showPopover(sender, dataArray: jsonData?[0].selectBank.map({ bnk in
             bnk.bankName
         }) ?? [], label: bnkSltTextLabel, constantValue: selectBankConst, ifscLabel: ifsclabel, ifscCode: ifscCode, dividerLabel: dividerLabel, dataModel: jsonData)
-        
     }
     
     @objc func selectAccTypeBtnTapped(_ sender: UIButton){

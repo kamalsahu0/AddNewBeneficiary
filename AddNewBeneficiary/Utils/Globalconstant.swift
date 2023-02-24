@@ -55,4 +55,11 @@ let ifscCode = UILabel()
 let dividerLabel = UIView()
 
 
-var AccountNumberError = UILabel()
+var accountNumberError = UILabel()
+
+var confirmAccNumberError = UILabel()
+
+var setNickNameError = UILabel()
+
+var benfNameError = UILabel()
+

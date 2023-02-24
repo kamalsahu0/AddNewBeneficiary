@@ -151,9 +151,8 @@ extension AddNewBeneficiaryView {
         accountNumber.font = .systemFont(ofSize: 20)
         accountNumber.delegate = self
         
-        AccountNumberError.translatesAutoresizingMaskIntoConstraints = false
-        AccountNumberError.textColor = .red
-        AccountNumberError.font = .systemFont(ofSize: 14)
+        accountNumberError.translatesAutoresizingMaskIntoConstraints = false
+        accountNumberError.font = .systemFont(ofSize: 14)
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .secondarySystemFill
@@ -166,6 +165,8 @@ extension AddNewBeneficiaryView {
         confirmAccNumber.autocapitalizationType = .none
         confirmAccNumber.font = .systemFont(ofSize: 20)
         //        confirmAccNumber.clearButtonMode = .whileEditing
+        confirmAccNumberError.translatesAutoresizingMaskIntoConstraints = false
+        confirmAccNumberError.font = .systemFont(ofSize: 14)
         
         dividerView1.translatesAutoresizingMaskIntoConstraints = false
         dividerView1.backgroundColor = .secondarySystemFill
@@ -177,6 +178,9 @@ extension AddNewBeneficiaryView {
         nickName.delegate = self
         nickName.autocorrectionType = .no
         nickName.autocapitalizationType = .none
+        setNickNameError.translatesAutoresizingMaskIntoConstraints = false
+        setNickNameError.font = .systemFont(ofSize: 14)
+        
         dividerView2.translatesAutoresizingMaskIntoConstraints = false
         dividerView2.backgroundColor = .secondarySystemFill
         
@@ -197,7 +201,9 @@ extension AddNewBeneficiaryView {
         beneficiaryName.delegate = self
         beneficiaryName.autocorrectionType = .no
         beneficiaryName.autocapitalizationType = .none
-        beneficiaryName.clearButtonMode = .whileEditing
+        //        beneficiaryName.clearButtonMode = .whileEditing
+        benfNameError.translatesAutoresizingMaskIntoConstraints = false
+        benfNameError.font = .systemFont(ofSize: 14)
         
         dividerView3.translatesAutoresizingMaskIntoConstraints = false
         dividerView3.backgroundColor = .secondarySystemFill
@@ -258,11 +264,14 @@ extension AddNewBeneficiaryView {
         addSubview(bnkVStackView)
         addSubview(ifscStackView)
         addSubview(accountStackView)
-        addSubview(AccountNumberError)
+        addSubview(accountNumberError)
         addSubview(confirmAccStackView)
+        addSubview(confirmAccNumberError)
         addSubview(nickNameStackView)
+        addSubview(setNickNameError)
         addSubview(lebelData)
         addSubview(bnfStackView)
+        addSubview(benfNameError)
         addSubview(accTypeVStackView)
         addSubview(checkBoxStackView)
         
@@ -304,9 +313,9 @@ extension AddNewBeneficiaryView {
         
         // Account error Message
         NSLayoutConstraint.activate([
-            AccountNumberError.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 0.5),
-            AccountNumberError.leadingAnchor.constraint(equalTo: dividerView.leadingAnchor),
-            dividerView.trailingAnchor.constraint(equalTo: AccountNumberError.trailingAnchor)
+            accountNumberError.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 0.5),
+            accountNumberError.leadingAnchor.constraint(equalTo: dividerView.leadingAnchor),
+            dividerView.trailingAnchor.constraint(equalTo: accountNumberError.trailingAnchor)
         ])
         
         //Confirm Account Number field
@@ -317,6 +326,13 @@ extension AddNewBeneficiaryView {
         ])
         dividerView1.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+        // Confirm Account error Message
+        NSLayoutConstraint.activate([
+            confirmAccNumberError.topAnchor.constraint(equalToSystemSpacingBelow: dividerView1.bottomAnchor, multiplier: 0.5),
+            confirmAccNumberError.leadingAnchor.constraint(equalTo: dividerView1.leadingAnchor),
+            dividerView1.trailingAnchor.constraint(equalTo: confirmAccNumberError.trailingAnchor)
+        ])
+        
         //NickName field
         NSLayoutConstraint.activate([
             nickNameStackView.topAnchor.constraint(equalToSystemSpacingBelow: confirmAccStackView.bottomAnchor, multiplier: 7),
@@ -324,6 +340,13 @@ extension AddNewBeneficiaryView {
             nickNameStackView.trailingAnchor.constraint(equalTo: confirmAccStackView.trailingAnchor)
         ])
         dividerView2.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        // setNick Name error Message
+        NSLayoutConstraint.activate([
+            setNickNameError.topAnchor.constraint(equalToSystemSpacingBelow: dividerView2.bottomAnchor, multiplier: 0.5),
+            setNickNameError.leadingAnchor.constraint(equalTo: dividerView2.leadingAnchor),
+            dividerView2.trailingAnchor.constraint(equalTo: setNickNameError.trailingAnchor)
+        ])
         
         //label data text
         NSLayoutConstraint.activate([
@@ -340,6 +363,13 @@ extension AddNewBeneficiaryView {
         ])
         dividerView3.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+        // BenfName error Message
+        NSLayoutConstraint.activate([
+            benfNameError.topAnchor.constraint(equalToSystemSpacingBelow: dividerView3.bottomAnchor, multiplier: 0.5),
+            benfNameError.leadingAnchor.constraint(equalTo: dividerView3.leadingAnchor),
+            dividerView3.trailingAnchor.constraint(equalTo: benfNameError.trailingAnchor)
+        ])
+        
         //select Bank acc Type dropDown
         NSLayoutConstraint.activate([
             accTypeHStackView.leadingAnchor.constraint(equalTo: bnkHStackView.leadingAnchor),
@@ -355,8 +385,7 @@ extension AddNewBeneficiaryView {
             checkBoxStackView.topAnchor.constraint(equalToSystemSpacingBelow: accTypeVStackView.bottomAnchor, multiplier: 1),
             checkboxButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10 ),
             
-            checkLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 60),
-            
+            checkLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 60)
         ])
         
     }
@@ -375,31 +404,56 @@ extension AddNewBeneficiaryView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        
-        if string.isEmpty {
-            return true // allow the deletion
-        }
-        
-        if (textField == accountNumber) || (textField == confirmAccNumber)
+        if (textField == accountNumber)
         {
-            let regex = try! NSRegularExpression(pattern: "[0-9]+")
-               let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
-            
-            if invalidAccountNumber(textField)
-            {
-                AccountNumberError.text = "Account number must be 10 digit in length"
+            if string.isEmpty {
+                accountNumberError.textColor = .red
                 dividerView.backgroundColor = .red
-                AccountNumberError.isHidden = false
+                accountNumberError.isHidden = false
+                return true
             }
-            else
-            {
-                dividerView.backgroundColor = .secondarySystemFill
-                AccountNumberError.isHidden = true
-            }
-            
+            let regex = try! NSRegularExpression(pattern: "[0-9]+")
+            let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
             return isValid
-            
         }
+        
+        else if (textField == confirmAccNumber)
+        {
+            if string.isEmpty {
+                confirmAccNumberError.textColor = .red
+                dividerView1.backgroundColor = .red
+                confirmAccNumberError.isHidden = false
+                return true
+            }
+            let regex = try! NSRegularExpression(pattern: "[0-9]+")
+            let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
+            return isValid
+        }
+        else if (textField == nickName)
+        {
+            if string.isEmpty {
+                setNickNameError.textColor = .red
+                dividerView2.backgroundColor = .red
+                setNickNameError.isHidden = false
+                return true
+            }
+            let regex = try! NSRegularExpression(pattern: "[a-zA-Z]+")
+            let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
+            return isValid
+        }
+        else if (textField == beneficiaryName)
+        {
+            if string.isEmpty {
+                benfNameError.textColor = .red
+                dividerView3.backgroundColor = .red
+                benfNameError.isHidden = false
+                return true
+            }
+            let regex = try! NSRegularExpression(pattern: "[a-zA-z]+")
+            let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
+            return isValid
+        }
+        
         return true
         
     }
@@ -407,13 +461,50 @@ extension AddNewBeneficiaryView: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         if textField == accountNumber {
-            print("Enter Account Number")
+            accountNumberError.text = "Enter Account Number"
+            accountNumberError.textColor = .gray
+            dividerView.backgroundColor = .secondarySystemFill
+            accountNumberError.isHidden = false
+            return true
         }
-        else if textField == confirmAccNumber
+        else
         {
-            print("Enter Confirm Account Number")
+            accountNumberError.isHidden = true
         }
-        
-        return true
+        if textField == confirmAccNumber
+        {
+            confirmAccNumberError.text = "Confirm Account Number"
+            confirmAccNumberError.textColor = .gray
+            dividerView1.backgroundColor = .secondarySystemFill
+            confirmAccNumberError.isHidden = false
+            return true
+        }
+        else
+        {
+            confirmAccNumberError.isHidden = true
+        }
+      if textField == nickName
+        {
+            setNickNameError.text = "Enter nick name"
+            setNickNameError.textColor = .gray
+            dividerView2.backgroundColor = .secondarySystemFill
+            setNickNameError.isHidden = false
+            return true
+        }
+        else{
+            setNickNameError.isHidden = true
+        }
+        if textField == beneficiaryName
+        {
+            benfNameError.text = "Enter beneficiary name"
+            benfNameError.textColor = .gray
+            dividerView3.backgroundColor = .secondarySystemFill
+            benfNameError.isHidden = false
+            return true
+        }
+        else{
+            benfNameError.isHidden = true
+        }
+        return false
     }
 }

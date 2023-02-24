@@ -14,8 +14,8 @@
             filePath = "AddNewBeneficiary/Views/AddNewBeneficiaryView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "accLayout()"
             landmarkType = "7">
          </BreakpointContent>
