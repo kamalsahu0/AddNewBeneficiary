@@ -54,7 +54,7 @@ let ifscCode = UILabel()
 // MARK: - ifsc code divider view
 let dividerLabel = UIView()
 
-
+// MARK: - Validations 
 var accountNumberError = UILabel()
 
 var confirmAccNumberError = UILabel()

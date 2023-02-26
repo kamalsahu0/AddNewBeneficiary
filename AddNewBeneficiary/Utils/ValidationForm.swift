@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Account number Validation
 var accountNumberValidation: Bool {
     
     if accountNumber.text?.isEmpty ?? true {
@@ -23,6 +24,7 @@ var accountNumberValidation: Bool {
     }
 }
 
+// MARK: - Confirm Account number Validation
 var confirmAccNumberValidation: Bool {
     // Check confirm number is empty
         if confirmAccNumber.text?.isEmpty ?? true {
@@ -33,12 +35,25 @@ var confirmAccNumberValidation: Bool {
             return false
         }
         else {
-            dividerView1.backgroundColor = .secondarySystemFill
-            confirmAccNumberError.isHidden = true
-            return true
+            if confirmAccNumber.text == accountNumber.text
+            {
+                dividerView1.backgroundColor = .secondarySystemFill
+                confirmAccNumberError.isHidden = true
+                return true
+            }
+            else
+            {
+                confirmAccNumberError.text = "Confirm account number does not match"
+                confirmAccNumberError.textColor = .red
+                dividerView1.backgroundColor = .red
+                confirmAccNumberError.isHidden = false
+                return false
+            }
+           
         }
 }
 
+// MARK: - Nick name Validation
 var nickNameValidation: Bool {
     // Check nickName is empty
         if nickName.text?.isEmpty ?? true {
@@ -55,6 +70,7 @@ var nickNameValidation: Bool {
         }
 }
 
+// MARK: - Beneficiary Name Validation
 var beneficiaryNameValidation: Bool{
     //check benef Name is Empty
     if beneficiaryName.text?.isEmpty ?? true {
@@ -71,24 +87,27 @@ var beneficiaryNameValidation: Bool{
     }
 }
 
+
+// MARK: - Validate Form
 func validateForm() -> Bool {
  
     if accountNumberValidation {
-        return true
+        debugPrint("account number valid")
     }
-    else if confirmAccNumberValidation {
-        return true
+    if confirmAccNumberValidation {
+        debugPrint("Confirm account number valid")
+        
     }
-    else if nickNameValidation {
-        return true
+    if nickNameValidation {
+        debugPrint("Nick name valid")
     }
-    else if beneficiaryNameValidation {
-        return true
+    if beneficiaryNameValidation {
+        debugPrint("Beneficiary name valid")
     }
     else
     {
         return false
     }
-    
+    return true
 }
 

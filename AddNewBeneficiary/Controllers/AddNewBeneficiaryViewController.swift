@@ -101,6 +101,10 @@ extension AddNewBeneficiaryViewController  {
         if validateForm() {
             print("Submit")
         }
+        else
+        {
+            print("invalid form")
+        }
     }
 }
 
