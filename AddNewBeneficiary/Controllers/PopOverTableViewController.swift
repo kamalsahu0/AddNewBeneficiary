@@ -14,7 +14,7 @@ class PopOverTableViewController: UIViewController {
     
     var dataArray: [String]
     
-    var dataModel: [DataModel]?
+    var ifscCodeArr: [String]?
     
     var constantName : String
     
@@ -26,10 +26,10 @@ class PopOverTableViewController: UIViewController {
     
     var dividerLabel: UIView?
     
-    init(dataArray: [String], label: UILabel, constantValue: String, ifscLabel: UILabel?, ifscCode: UILabel?, dividerLabel: UIView?, dataModel: [DataModel]?) {
+    init(dataArray: [String], label: UILabel, constantValue: String, ifscLabel: UILabel?, ifscCode: UILabel?, dividerLabel: UIView?, ifscCodeArr: [String]?) {
         
         self.dataArray = dataArray
-        self.dataModel = dataModel
+        self.ifscCodeArr = ifscCodeArr
         self.label = label
         self.constantName = constantValue
         self.ifscLabel = ifscLabel
@@ -76,6 +76,7 @@ extension PopOverTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = dataArray[indexPath.row]
+    
         return cell
     }
     
@@ -86,7 +87,8 @@ extension PopOverTableViewController: UITableViewDelegate, UITableViewDataSource
         
         if indexPath.row != 0 && indexPath.row != 1 {
             ifscLabel?.text = "Enter IFSC"
-            ifscCode?.text = dataModel?[0].selectBank[indexPath.row - 1].ifscCode
+            ifscCode?.text = ifscCodeArr?[indexPath.row]
+            //dataModel?[0].selectBank[indexPath.row - 1].ifscCode
             dividerLabel?.backgroundColor = .secondarySystemFill
             
         }

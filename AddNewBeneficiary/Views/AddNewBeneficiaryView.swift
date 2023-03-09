@@ -394,12 +394,13 @@ extension AddNewBeneficiaryView {
 // MARK: - Extension AddNewBeneficiaryView TextField Delegate
 extension AddNewBeneficiaryView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("nkns")
+        print("return value")
+
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("")
+        print("did end editing")
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -449,12 +450,17 @@ extension AddNewBeneficiaryView: UITextFieldDelegate {
                 benfNameError.isHidden = false
                 return true
             }
-            let regex = try! NSRegularExpression(pattern: "[a-zA-z]+")
-            let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
-            return isValid
+            do{
+                let regex = try NSRegularExpression(pattern: "[a-zA-z]+")
+                let isValid = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count)).count > 0
+                return isValid
+            }
+            catch {
+                print(error)
+            }
         }
-        
-        return true
+
+      return true
         
     }
     

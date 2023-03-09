@@ -96,7 +96,6 @@ func validateForm() -> Bool {
     }
     if confirmAccNumberValidation {
         debugPrint("Confirm account number valid")
-        
     }
     if nickNameValidation {
         debugPrint("Nick name valid")

@@ -17,6 +17,7 @@ extension UIViewController {
             let navigationbar = UINavigationBar(frame: CGRect(x: 0, y: statusBarHeight, width: self.view.bounds.width, height: self.view.bounds.height))
             
             let navItem = UINavigationItem(title: "Add New Beneficiary")
+           // navItem.titleView?.tintColor = .white
             
             UINavigationBar.appearance().barTintColor = .init(red: 1, green: 0.1, blue: 0.1, alpha: 1)
             UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

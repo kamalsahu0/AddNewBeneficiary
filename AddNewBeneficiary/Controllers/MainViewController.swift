@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
         style()
         layout()
     }
-    
     func style()
     {
         launchBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +35,6 @@ class MainViewController: UIViewController {
     
     @objc func launchbuttonTapped(_ sender: UIButton) {
         let addNewBeneficiaryViewController = AddNewBeneficiaryViewController()
-        // addNewBeneficiaryViewController.title = "Add New Beneficiary"
         navigationController?.pushViewController(addNewBeneficiaryViewController, animated: true)
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white

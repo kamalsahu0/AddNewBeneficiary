@@ -8,12 +8,14 @@ import UIKit
 
 class AddNewBeneficiaryViewController: UIViewController {
     
+    var arrBankVeiwModel = [BankViewModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         changeStatusBarColor()
         setNavigationBar()
         style()
         layout()
+        self.getAllData()
     }
     
     // MARK: - ScrollView
@@ -28,7 +30,7 @@ class AddNewBeneficiaryViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var addNewBeneficiaryView = AddNewBeneficiaryView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.width, height: 50))
+    lazy var addNewBeneficiaryView = AddNewBeneficiaryView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.width, height: 0))
     
     
     // MARK: - AddNewBeneficiary Stack view
@@ -99,11 +101,11 @@ extension AddNewBeneficiaryViewController  {
         selectAccType(sltAccTypeText: sltAccTypeTextLabel)
         
         if validateForm() {
-            print("Submit")
+            debugPrint("Submit")
         }
         else
         {
-            print("invalid form")
+            debugPrint("invalid form")
         }
     }
 }
@@ -111,10 +113,10 @@ extension AddNewBeneficiaryViewController  {
 // MARK: - Extension AddNewBeneficiaryViewController for PopOver View Controller
 extension AddNewBeneficiaryViewController: UIPopoverPresentationControllerDelegate {
     
-    func showPopover(_ sender: UIButton, dataArray: [String], label: UILabel, constantValue: String, ifscLabel: UILabel?, ifscCode: UILabel?, dividerLabel: UIView?, dataModel: [DataModel]?) {
+    func showPopover(_ sender: UIButton, dataArray: [String], label: UILabel, constantValue: String, ifscLabel: UILabel?, ifscCode: UILabel?, dividerLabel: UIView?, ifscCodeArr: [String]?) {
         
         // Create a view controller to display in the popover
-        let contentViewController = PopOverTableViewController(dataArray: dataArray, label: label, constantValue: constantValue, ifscLabel: ifscLabel, ifscCode: ifscCode, dividerLabel: dividerLabel, dataModel: dataModel)
+        let contentViewController = PopOverTableViewController(dataArray: dataArray, label: label, constantValue: constantValue, ifscLabel: ifscLabel, ifscCode: ifscCode, dividerLabel: dividerLabel, ifscCodeArr: ifscCodeArr)
         
         contentViewController.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 2.5)
         
@@ -165,15 +167,30 @@ extension AddNewBeneficiaryViewController: UIPopoverPresentationControllerDelega
     }
     
     
+    
     @objc func bnkSltButtonTapped(_ sender: UIButton) {
         
-        showPopover(sender, dataArray: jsonData?[0].selectBank.map({ bnk in
-            bnk.bankName
-        }) ?? [], label: bnkSltTextLabel, constantValue: selectBankConst, ifscLabel: ifsclabel, ifscCode: ifscCode, dividerLabel: dividerLabel, dataModel: jsonData)
+        showPopover(sender, dataArray: arrBankVeiwModel[0].selectBank.map({ bank in
+            bank.bankName
+        }) , label: bnkSltTextLabel, constantValue: selectBankConst, ifscLabel: ifsclabel, ifscCode: ifscCode, dividerLabel: dividerLabel, ifscCodeArr:  arrBankVeiwModel[0].selectBank.map({ bank in
+            bank.ifscCode 
+        }))
     }
     
     @objc func selectAccTypeBtnTapped(_ sender: UIButton){
-        showPopover(sender, dataArray: jsonData?[0].selectAccType ?? [], label: sltAccTypeTextLabel, constantValue: sltAccTypeConst, ifscLabel: nil, ifscCode: nil, dividerLabel: nil, dataModel: nil)
+        showPopover(sender, dataArray: arrBankVeiwModel[0].selectAccType, label: sltAccTypeTextLabel, constantValue: sltAccTypeConst, ifscLabel: nil, ifscCode: nil, dividerLabel: nil, ifscCodeArr: nil)
     }
 }
 
+extension AddNewBeneficiaryViewController
+{
+    func getAllData() {
+        Service.shareInstance.getAllBankData { bank, err in
+            if err == nil
+            {
+                self.arrBankVeiwModel = bank?.map({ return BankViewModel(bank: $0)}) ?? []
+            }
+            print(self.arrBankVeiwModel)
+        }
+    }
+}

@@ -1,73 +1,77 @@
-[
-    {
-        "selectBank":
-        [
-            {
-                "bankName" : "KOTAK MAHINDRA BANK",
-                "ifscCode" : "KKBK0000726"
-            },
-            {
-                "bankName" : "AXIS BANK",
-                "ifscCode" : "UTIB0000037"
-            },
-            {
-                "bankName" : "BANK OF BARODA",
-                "ifscCode" : "BARB0POOCAM"
-            },
-            {
-                "bankName" : "BANK OF INDIA",
-                "ifscCode" : "BKID0000559"
-            },
-            {
-                "bankName" : "BANK OF MAHARASHTRA",
-                "ifscCode" : "MAHB0001150"
-            },
-            {
-                "bankName" : "CANARA BANK",
-                "ifscCode" : "CNRB0008355"
-            },
-            {
-                "bankName" : "CENTRAL BANK OF INDIA",
-                "ifscCode" : "CBIN0280661"
-            },
-            {
-                "bankName" : "CITI BANK",
-                "ifscCode" : "CITI0000005"
-            },
-            {
-                "bankName" : "FEDERAL BANK LTD.",
-                "ifscCode" : "FDRL0001348"
-            },
-            {
-                "bankName" : "HDFC BANK LTD",
-                "ifscCode" : "HDFC0000185"
-            },
-            {
-                "bankName" : "ICICI BANK LTD",
-                "ifscCode" : "ICIC0006997"
-            },
-            {
-                "bankName" : "UNION BANK OF INDIA",
-                "ifscCode" : "UBIN0554596"
-            },
-            {
-                "bankName" : "STATE BANK OF INDIA",
-                "ifscCode" : "SBIN0000454"
-            },
-            {
-                "bankName" : "INDUSIND BANK",
-                "ifscCode" : "INDB0000271"
-            },
-            {
-                "bankName" : "IDBI BANK",
-                "ifscCode" : "IBKL0001583"
-            },
-            {
-                "bankName" : "OTHER BANKS",
-                "ifscCode" : " "
-            }
-        ],
-        "selectAccType" :
-        ["Saving", "Current", "Overdraft", "Cash Credit", "Loan", "NRE", "Credit Card"]
-    }
-]
+{
+    "result" :
+    [
+        {
+            "select_Bank":
+            [
+                {
+                    "bank_Name" : "KOTAK MAHINDRA BANK",
+                    "ifsc_Code" : ""
+                },
+                {
+                    "bank_Name" : "AXIS BANK",
+                    "ifsc_Code" : "UTIB0000037"
+                },
+                {
+                    "bank_Name" : "BANK OF BARODA",
+                    "ifsc_Code" : "BARB0POOCAM"
+                },
+                {
+                    "bank_Name" : "BANK OF INDIA",
+                    "ifsc_Code" : "BKID0000559"
+                },
+                {
+                    "bank_Name" : "BANK OF MAHARASHTRA",
+                    "ifsc_Code" : "MAHB0001150"
+                },
+                {
+                    "bank_Name" : "CANARA BANK",
+                    "ifsc_Code" : "CNRB0008355"
+                },
+                {
+                    "bank_Name" : "CENTRAL BANK OF INDIA",
+                    "ifsc_Code" : "CBIN0280661"
+                },
+                {
+                    "bank_Name" : "CITI BANK",
+                    "ifsc_Code" : "CITI0000005"
+                },
+                {
+                    "bank_Name" : "FEDERAL BANK LTD.",
+                    "ifsc_Code" : "FDRL0001348"
+                },
+                {
+                    "bank_Name" : "HDFC BANK LTD",
+                    "ifsc_Code" : "HDFC0000185"
+                },
+                {
+                    "bank_Name" : "ICICI BANK LTD",
+                    "ifsc_Code" : "ICIC0006997"
+                },
+                {
+                    "bank_Name" : "UNION BANK OF INDIA",
+                    "ifsc_Code" : "UBIN0554596"
+                },
+                {
+                    "bank_Name" : "STATE BANK OF INDIA",
+                    "ifsc_Code" : "SBIN0000454"
+                },
+                {
+                    "bank_Name" : "INDUSIND BANK",
+                    "ifsc_Code" : "INDB0000271"
+                },
+                {
+                    "bank_Name" : "IDBI BANK",
+                    "ifsc_Code" : "IBKL0001583"
+                },
+                {
+                    "bank_Name" : "OTHER BANKS",
+                    "ifsc_Code" : " "
+                }
+            ],
+            "select_Acc_Type" :
+            ["Saving", "Current", "Overdraft", "Cash Credit", "Loan", "NRE", "Credit Card"]
+        }
+        
+    ]
+}

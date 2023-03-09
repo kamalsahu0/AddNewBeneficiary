@@ -11,9 +11,6 @@ import UIKit
 // MARK: - Main screen launch button
 let launchBtn = UIButton(type: .system)
 
-// MARK: - object of json api
-let jsonData = FetchApi().loadJson()
-
 // MARK: - dropdown constant text
 let selectBankConst = "Select Bank"
 let sltAccTypeConst = "Select account type"
