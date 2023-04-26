@@ -7,7 +7,10 @@
 
 import Foundation
 
-
+// MARK: - DataModel
+class DataModel: Codable {
+    let result: [BankModel]
+}
 // MARK: - BankModel
 class BankModel: Codable {
     let selectBank: [SelectBank]
@@ -37,8 +40,4 @@ class SelectBank: Codable {
         self.ifscCode = ifscCode
     }
     
-    
-}
-class DataModel: Codable {
-    let result: [BankModel]
 }

@@ -3,4 +3,86 @@
    uuid = "2FECBA82-F2E6-4195-AA2A-0BF0EC664923"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3B97218E-3DB5-47F7-9B50-AC2B4ACF86AF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddNewBeneficiary/Controllers/PopOverTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE503FB3-485E-4FDC-9448-2BF127685106"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddNewBeneficiary/Service/Service.swift"
+            startingColumnNumber = "16"
+            endingColumnNumber = "29"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "shareInstance"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "AE503FB3-485E-4FDC-9448-2BF127685106 - b55d4956d7450676"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AddNewBeneficiary.Service.shareInstance.unsafeMutableAddressor : AddNewBeneficiary.Service"
+                  moduleName = "AddNewBeneficiary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamalsahu/Documents/Practice%20Project/AddNewBeneficiary/AddNewBeneficiary/Service/Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "AE503FB3-485E-4FDC-9448-2BF127685106 - e0bf7fef360a782f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AddNewBeneficiary.Service.shareInstance.getter : AddNewBeneficiary.Service"
+                  moduleName = "AddNewBeneficiary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamalsahu/Documents/Practice%20Project/AddNewBeneficiary/AddNewBeneficiary/Service/Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2F66673-9505-42B4-A1ED-FB740DBDD73C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddNewBeneficiary/Controllers/AddNewBeneficiaryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "AddNewBeneficiaryViewController"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
